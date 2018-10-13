@@ -49,6 +49,6 @@ public class USCrime {
 
     // Shutting down
     System.out.println(sessionMenu.getGoodbyeMessage());
-    System.out.println(sessionTimer.getStopMessage());
+    System.out.println(sessionTimer.getTimeDuration());
   }
 }
