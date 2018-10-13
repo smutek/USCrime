@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
 /*
- * File: USCrime.java
+ * File: Main.java
  * Author: Jimmy Smutek
  * Date: Oct 12, 2018
  * Purpose: Provides US Crime Date
  * @todo write purpose for main class
  */
-public class USCrime {
+public class Main {
 
   public static void main(String[] args) {
     // Create a Menu
@@ -21,10 +21,10 @@ public class USCrime {
     // @todo finish timer class
     System.out.println(sessionTimer.getStartMessage());
 
-    // open and read in the file - USCrime class
-    // @todo implement USCrime class
+    // open and read in the file - Main class
+    // @todo implement Main class
     System.out.println("Open and read file now....");
-    System.out.println("Create USCrime object now...");
+    System.out.println("Create Main object now...");
 
     // welcome the user - menu class(? or main?)
     // @todo implement menu class

@@ -28,7 +28,7 @@ class TimeKeeper {
   String getTimeDuration() {
     Instant timerStop = Instant.now();
     // @todo format time output
-    return "Elapsed time: " + Duration.between(this.timerStart, timerStop);
+    return "Elapsed time: " + Duration.between(timerStart, timerStop);
   }
 
   String getStartMessage() {
