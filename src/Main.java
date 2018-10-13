@@ -22,7 +22,7 @@ public class Main {
     System.out.println(sessionTimer.getStartMessage());
 
     // open and read in the file - Main class
-    // @todo implement Main class
+    // @todo implement USCrimeData class
     System.out.println("Open and read file now....");
     System.out.println("Create Main object now...");
 
@@ -31,13 +31,12 @@ public class Main {
     System.out.println(sessionMenu.getHelloMessage());
 
     do {
-
       // prompt the user for input
       System.out.println(sessionMenu.getInputPrompt());
+      // Loop over selections
       for (String choice : sessionMenu.getChoicesList()) {
         System.out.println(choice);
       }
-
       userResponse = inputScanner.nextLine();
       // process the user input
 
@@ -48,7 +47,8 @@ public class Main {
     } while (!userResponse.equalsIgnoreCase("quit"));
 
     // Shutting down
-    System.out.println(sessionMenu.getGoodbyeMessage());
+    System.out.println(sessionTimer.getUserClockTime());
     System.out.println(sessionTimer.getTimeDuration());
+    System.out.println(sessionMenu.getGoodbyeMessage());
   }
 }
