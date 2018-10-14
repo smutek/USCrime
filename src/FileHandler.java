@@ -11,48 +11,34 @@ import java.io.IOException;
  */
 class FileHandler {
 
-  void readUserFile(String filePath) {
-    FileInputStream in = null;
-    String fileLine;
+  public static void main(String[] args) {
+    String fileline;
     BufferedReader inputStream = null;
+    String filePath = args[0];
 
     try {
-      in = new FileInputStream(filePath);
+      // Create a BufferedReader
       inputStream = new BufferedReader(new FileReader(filePath));
-      System.out.println("File contents:");
-      int totalRows = 0;
-      int totalColumns = 0;
-      // Count
-      while ((fileLine = inputStream.readLine()) != null) {
-        totalRows++;
-        for (int i = 0; i < fileLine.length(); i++) {
-          if (fileLine.charAt(i) == ',') totalColumns++;
-        }
-      }
-      String[][] crimeArray = new String[totalRows][totalColumns];
-      int i = 0;
-      while ((fileLine = inputStream.readLine()) != null) {
-        crimeArray[i] = fileLine.split(",");
-      }
 
-      for (String[] crime : crimeArray ) {
-        System.out.println(crime[0]);
-        System.out.println();
-      }
+      //int[] totalRowsAndColumns =
 
     } catch (IOException io) {
-      System.out.println("File IO exception " + io.getMessage());
-    } finally {
+      System.out.println("Error opening file: " + io.getMessage());
+    } finally{
       try {
-        if (in != null) {
-          in.close();
-        }
-        if (inputStream != null) {
+        if(inputStream != null) {
           inputStream.close();
         }
       } catch (IOException io) {
-        System.out.println("Problem closing the file. " + io.getMessage());
+        System.out.println("Problem closing stream: " + io.getMessage());
       }
     }
+
   }
+
+  int[] countRowsAndColumns(BufferedReader inputStream) {
+    return new int[] {21,19};
+  }
+
+
 }
