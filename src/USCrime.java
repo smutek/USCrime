@@ -13,16 +13,18 @@ public class USCrime {
     // Create a Menu
     Menu sessionMenu = new Menu();
     TimeKeeper sessionTimer = new TimeKeeper();
+    FileHandler dataFile = new FileHandler();
     // Users Input
     String userResponse;
 
     Scanner inputScanner = new Scanner(System.in);
 
-    // @todo finish timer class
     System.out.println(sessionTimer.getStartMessage());
 
     // open and read in the file - USCrime class
+    dataFile.readUserFile("/Users/jimmysmutek/Code/school/USCrime/resources/Crime.csv");
     // @todo implement USCrimeData class
+
 
     // Hello, user.
     System.out.println(sessionMenu.getHelloMessage());
