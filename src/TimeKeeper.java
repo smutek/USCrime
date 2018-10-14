@@ -27,10 +27,9 @@ class TimeKeeper {
     // "Start the timer" by creating an Instant
     timerStart = Instant.now();
     startMessage =
-        "Today's date is "
+        "Today is "
             + timeStarted.format(todaysDate)
-            + ".\n"
-            + "Current time is "
+            + ". The current time is "
             + timeStarted.format(clockTime);
   }
 
@@ -50,12 +49,12 @@ class TimeKeeper {
     if (Duration.between(timerStart, timerStop).toSeconds() > 60) {
       minutes = durationBetween.toMinutes();
       seconds = durationBetween.toMinutes() % 60;
-      timeElapsed = minutes + "minutes, " + seconds + " seconds";
+      timeElapsed = minutes + " minutes, " + seconds + " seconds";
     } else {
       timeElapsed = durationBetween.toSeconds() + " seconds";
     }
 
-    return timeElapsed;
+    return "Total time on the system: " + timeElapsed;
   }
 
   /**
@@ -64,7 +63,7 @@ class TimeKeeper {
    * @return String The users time formatted as a string.
    */
   String getUserClockTime() {
-    return "Current time: " + LocalDateTime.now().format(clockTime);
+    return "Current time is " + LocalDateTime.now().format(clockTime);
   }
 
   /**

@@ -9,19 +9,23 @@ class Menu {
   private String inputPrompt;
   private String helloMessage;
   private String goodbyeMessage;
-  private String[] choicesList = new String[3];
+  private String[] choicesList = new String[6];
 
   Menu() {
-    helloMessage = "Hello, User.";
-    goodbyeMessage = "Goodbye, User.";
+    helloMessage = "Hello, User. Welcome to the USCrime Statistical Generator Machine.";
+    goodbyeMessage = "Goodbye, User. Thank you for using the system.";
 
     inputPrompt =
-        "Please make your selection by typing a letter from the list below.\n"
-            + "Type QUIT at any time to exit.";
+        "Please make your selection by typing a number from the list below.\n"
+            + "Type Q at any time to quit.";
 
-    choicesList[0] = "Choice 1";
-    choicesList[1] = "Choice 2";
-    choicesList[2] = "Choice 3";
+    choicesList[0] =
+        "What were the percentages in population growth for each consecutive year from 1994 – 2013?";
+    choicesList[1] = "What year was the Murder rate the highest?";
+    choicesList[2] = "What year was the Murder rate the lowest?";
+    choicesList[3] = "What year was the Robbery rate the highest?";
+    choicesList[4] = "What year was the Robbery rate the lowest?";
+    choicesList[5] = "Quit the program";
   }
 
   String getInputPrompt() {

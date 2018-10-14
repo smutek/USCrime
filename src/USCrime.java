@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
 /*
- * File: Main.java
+ * File: USCrime.java
  * Author: Jimmy Smutek
  * Date: Oct 12, 2018
  * Purpose: Provides US Crime Date
  * @todo write purpose for main class
  */
-public class Main {
+public class USCrime {
 
   public static void main(String[] args) {
     // Create a Menu
@@ -21,34 +21,38 @@ public class Main {
     // @todo finish timer class
     System.out.println(sessionTimer.getStartMessage());
 
-    // open and read in the file - Main class
+    // open and read in the file - USCrime class
     // @todo implement USCrimeData class
-    System.out.println("Open and read file now....");
-    System.out.println("Create Main object now...");
 
-    // welcome the user - menu class(? or main?)
-    // @todo implement menu class
+    // Hello, user.
     System.out.println(sessionMenu.getHelloMessage());
 
+    // Main program loop.
     do {
       // prompt the user for input
       System.out.println(sessionMenu.getInputPrompt());
       // Loop over selections
+      int i = 0;
+      String number;
       for (String choice : sessionMenu.getChoicesList()) {
-        System.out.println(choice);
+        if (i == 5) {
+          number = "Q";
+        } else {
+          number = Integer.toString(i + 1);
+        }
+        System.out.println(number + ". " + choice);
+        i++;
       }
       userResponse = inputScanner.nextLine();
       // process the user input
-
       // send results to the user
-
       System.out.println("You entered: " + userResponse);
 
     } while (!userResponse.equalsIgnoreCase("quit"));
 
     // Shutting down
+    System.out.println(sessionMenu.getGoodbyeMessage());
     System.out.println(sessionTimer.getUserClockTime());
     System.out.println(sessionTimer.getTimeDuration());
-    System.out.println(sessionMenu.getGoodbyeMessage());
   }
 }
