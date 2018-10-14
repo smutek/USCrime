@@ -22,7 +22,7 @@ public class USCrime {
     System.out.println(sessionTimer.getStartMessage());
 
     // open and read in the file - USCrime class
-    dataFile.readUserFile("/Users/jimmysmutek/Code/school/USCrime/resources/Crime.csv");
+    //dataFile.readUserFile("/Users/jimmysmutek/Code/school/USCrime/resources/Crime.csv");
     // @todo implement USCrimeData class
 
 
