@@ -11,9 +11,24 @@ public class USCrime {
 
   public static void main(String[] args) {
     // Create a Menu
+
+    // @todo incoming args
+    final String FILE_PATH = "/Users/jimmysmutek/Code/school/USCrime/resources/Crime.csv";
+
     Menu sessionMenu = new Menu();
     TimeKeeper sessionTimer = new TimeKeeper();
-    FileHandler dataFile = new FileHandler();
+    // @todo this comes uin as a CLI arg
+    // Try to create a crime data object
+    CrimeDataObject crimeDataObject = new CrimeDataObject(FILE_PATH);
+    /*
+    Trying to create a crime data object involves:
+    Pass the file path to the CDO class.
+
+    CDO constructor will:
+      1. Make a CrimeDataObject an d it's methods available.
+
+     */
+
     // Users Input
     String userResponse;
 
