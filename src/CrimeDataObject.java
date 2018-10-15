@@ -6,7 +6,7 @@
  */
 class CrimeDataObject {
 
-  final String[] AVAILABLE_OPTIONS = {
+  final static String[] AVAILABLE_OPTIONS = {
     "1. What were the percentages in population growth for each consecutive year from 1994 – 2013?",
     "2. What year was the Murder rate the highest?",
     "3. What year was the Murder rate the lowest?",
@@ -14,60 +14,72 @@ class CrimeDataObject {
     "5. What year was the Robbery rate the lowest?",
     "Q  Quit the program\n"
   };
-  private final int YEAR_INDEX = 0;
+
   private final int MURDER_RATE_INDEX = 5;
   private final int ROBBERY_RATE_INDEX = 9;
 
   private String[][] crimeDataArray;
-  private FileHandler fileHandler;
-  private String filePath;
-  private String[] fileHeaders;
-  private String[] availableYears;
-  private double[] populationGrowth;
 
+  /**
+   * Constructor
+   * @param filePath String
+   */
   CrimeDataObject(String filePath) {
-    fileHandler = new FileHandler(filePath);
-    crimeDataArray = this.fileHandler.getCrimeArray(filePath);
+    FileHandler fileHandler = new FileHandler(filePath);
+    crimeDataArray = fileHandler.getCrimeArray(filePath);
   }
 
+  /**
+   * Process an incoming request from the user, return the matching response.
+   * @param userRequest String
+   */
   void processRequest(String userRequest) {
     if (!userRequest.equalsIgnoreCase("q")) {
       switch (userRequest) {
         case "1":
+        case "1.":
           getPopulationGrowth();
           break;
         case "2":
+        case "2.":
           getHighestMurderRate();
           break;
         case "3":
+        case "3,":
           getLowestMurderRate();
           break;
         case "4":
+        case "4.":
           getHighestRobberyRate();
           break;
         case "5":
+        case "5.":
           getLowestRobberyRate();
           break;
         default:
           System.out.println("Invalid response, please try again.\n");
       }
     }
-    // Add a blank space below output
-    System.out.println();
   }
 
+  /**
+   * Calculates the population growth and prints results to the screen.
+   */
   private void getPopulationGrowth() {
 
     String[] growthArray = new String[crimeDataArray.length - 1];
 
     growthArray[0] = "\nPopulation Growth in Percentages:";
-    // population growth = ((y2 - y1)/y1)*100
     for (int i = 1; i < growthArray.length; i++) {
+      // Years
       String year1 = crimeDataArray[i][0];
       String year2 = crimeDataArray[i + 1][0];
+      // Corresponding population Values
       float y1 = Float.parseFloat(crimeDataArray[i][1]);
       float y2 = Float.parseFloat(crimeDataArray[i + 1][1]);
+      // population growth = ((y2 - y1)/y1)*100
       double populationGrowth = ((y2 - y1) / y1) * 100;
+      // Construct array of results
       growthArray[i] =
           year1
               + "-"
@@ -78,12 +90,15 @@ class CrimeDataObject {
               + Double.toString(Math.round(populationGrowth * 10000d) / 10000d)
               + "%";
     }
-
+    // output results
     for (String line : growthArray) {
       System.out.println(line);
     }
   }
 
+  /**
+   * Get the year of the highest murder rate & print to screen
+   */
   private void getHighestMurderRate() {
     String[] highestMurderRate = getHighest(getColumnByIndex(MURDER_RATE_INDEX));
     System.out.println(
@@ -94,6 +109,9 @@ class CrimeDataObject {
             + "%.");
   }
 
+  /**
+   * Get the year of the lowest murder rate and print to screen
+   */
   private void getLowestMurderRate() {
     String[] lowestMurderRate = getLowest(getColumnByIndex(MURDER_RATE_INDEX));
     System.out.println(
@@ -104,6 +122,9 @@ class CrimeDataObject {
             + "%.");
   }
 
+  /**
+   * Get the year of the highest robbery rate and print to screen
+   */
   private void getHighestRobberyRate() {
     String[] highestRobberyRate = getHighest(getColumnByIndex(ROBBERY_RATE_INDEX));
     System.out.println(
@@ -114,6 +135,9 @@ class CrimeDataObject {
             + "%.");
   }
 
+  /**
+   * Get the year of the lowest robbery rate and print to screen
+   */
   private void getLowestRobberyRate() {
     String[] lowestRobberyRate = getLowest(getColumnByIndex(ROBBERY_RATE_INDEX));
     System.out.println(
@@ -124,8 +148,14 @@ class CrimeDataObject {
             + "%.");
   }
 
+  /**
+   * Utility, gets the highest value from an array passed to it.
+   * @param column String[]
+   * @return Highest rate and year occurred String[]
+   */
   private String[] getHighest(String[] column) {
     String[] highestYearRate = new String[2];
+    // Offset start index by one to skip headers
     double highest = Double.parseDouble(column[1]);
     String year = crimeDataArray[1][0];
     for (int i = 2; i < column.length; i++) {
@@ -139,6 +169,11 @@ class CrimeDataObject {
     return highestYearRate;
   }
 
+  /**
+   * Utility, gets the lowest value from an array passed to it.
+   * @param column String[]
+   * @return Lowest rate and year occurred String[]
+   */
   private String[] getLowest(String[] column) {
     String[] lowestYearRate = new String[2];
     double lowest = Double.parseDouble(column[1]);
@@ -154,6 +189,11 @@ class CrimeDataObject {
     return lowestYearRate;
   }
 
+  /**
+   * Utility method to grab a column from the CrimeData array
+   * @param columnIndex Index for the Column to grab
+   * @return column String[] the desired column
+   */
   private String[] getColumnByIndex(int columnIndex) {
     String column[] = new String[crimeDataArray.length];
     int i = 0;
@@ -164,13 +204,4 @@ class CrimeDataObject {
     return column;
   }
 
-  private String[] getRowByIndex(int rowIndex) {
-    return crimeDataArray[rowIndex];
-  }
-
-  void printCrimeDataArray(String[][] crimeDataArray) {
-    crimeDataArray = this.crimeDataArray;
-    String[] arrayRow[];
-    String[] arrayColumn;
-  }
 }

@@ -6,12 +6,11 @@ import java.io.IOException;
  * File: FileHandler.java
  * Author: Jimmy Smutek
  * Date: Oct 13, 2018
- * Purpose: Handles file read and validation. Creates an instance of CrimeDataObject once the file has
- * been successfully read in.
+ * Purpose: Process the file, create an array.
  */
 class FileHandler {
 
-  // do 4 things
+  // should do 4 things:
   // make sure everything is cool
   // count rows and columns
   // create an array
@@ -41,10 +40,8 @@ class FileHandler {
             if (fileLine.charAt(i) == ',') totalColumns++;
           }
           // we now have num columns (19)
-          final int NUM_COLUMNS = totalColumns;
         }
         // we now have num rows (21)
-        final int NUM_ROWS = totalRows;
       }
       // Reset input stream
       inputStream = new BufferedReader(new FileReader(filePath));
@@ -59,7 +56,7 @@ class FileHandler {
       // We now have a crime array
       // Create an instance of CrimeDataObject
 
-      //System.out.println("File Contents:");
+      // System.out.println("File Contents:");
 
     } catch (IOException io) {
       System.out.println("Error opening file: " + io.getMessage());
@@ -125,7 +122,7 @@ class FileHandler {
         System.out.println("Problem closing stream: " + io.getMessage());
       }
     }
-      return null;
+    // @todo Fix this
+    return null;
   }
-
 }

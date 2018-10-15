@@ -5,17 +5,14 @@ import java.util.Scanner;
  * File: USCrime.java
  * Author: Jimmy Smutek
  * Date: Oct 12, 2018
- * Purpose: Provides US Crime Date
- * @todo write purpose for main class
+ * Purpose: Main Class for USCrime Application
  */
 public class USCrime {
 
   public static void main(String[] args) {
 
-    String filePath = args[0];
-
     // Try to create a crimeDataObject, based on the supplied file path.
-    CrimeDataObject crimeDataObject = new CrimeDataObject(filePath);
+    CrimeDataObject crimeDataObject = new CrimeDataObject(args[0]);
 
     // Init vars
     Menu sessionMenu = new Menu();
@@ -31,16 +28,13 @@ public class USCrime {
     do {
       // prompt the user for input
       System.out.println(sessionMenu.getInputPrompt());
-      // Loop over selections
-
-      for (String choice : crimeDataObject.AVAILABLE_OPTIONS)
-        System.out.println(choice);
+      // Show selections
+      for (String choice : crimeDataObject.AVAILABLE_OPTIONS) System.out.println(choice);
 
       userResponse = inputScanner.nextLine();
       System.out.println("You entered: " + userResponse + "\n");
       // process the user input & send results to screen
       crimeDataObject.processRequest(userResponse);
-
 
     } while (!userResponse.equalsIgnoreCase("q"));
 

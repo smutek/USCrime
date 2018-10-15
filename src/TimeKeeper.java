@@ -21,7 +21,6 @@ class TimeKeeper {
    * Instant.
    */
   TimeKeeper() {
-    // @todo Remove this or clean it up.
     LocalDateTime timeStarted = LocalDateTime.now();
     DateTimeFormatter todaysDate = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy");
     // "Start the timer" by creating an Instant
