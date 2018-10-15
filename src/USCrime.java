@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -10,62 +11,39 @@ import java.util.Scanner;
 public class USCrime {
 
   public static void main(String[] args) {
-    // Create a Menu
 
-    // @todo incoming args
+    // @todo use incoming args
     final String FILE_PATH = "/Users/jimmysmutek/Code/school/USCrime/resources/Crime.csv";
 
+    // Try to create a crimeDataObject, based on the supplied file path.
+    CrimeDataObject crimeDataObject = new CrimeDataObject(FILE_PATH);
+
+    // Init vars
     Menu sessionMenu = new Menu();
     TimeKeeper sessionTimer = new TimeKeeper();
-    // @todo this comes uin as a CLI arg
-    // Try to create a crime data object
-    CrimeDataObject crimeDataObject = new CrimeDataObject(FILE_PATH);
-    /*
-    Trying to create a crime data object involves:
-    Pass the file path to the CDO class.
-
-    CDO constructor will:
-      1. Make a CrimeDataObject an d it's methods available.
-
-     */
-
-    // Users Input
     String userResponse;
-
     Scanner inputScanner = new Scanner(System.in);
 
-    System.out.println(sessionTimer.getStartMessage());
-
-    // open and read in the file - USCrime class
-    //dataFile.readUserFile("/Users/jimmysmutek/Code/school/USCrime/resources/Crime.csv");
-    // @todo implement USCrimeData class
-
-
     // Hello, user.
+    System.out.println(sessionTimer.getStartMessage());
     System.out.println(sessionMenu.getHelloMessage());
 
-    // Main program loop.
+    // Start Main program loop
     do {
       // prompt the user for input
       System.out.println(sessionMenu.getInputPrompt());
       // Loop over selections
-      int i = 0;
-      String number;
-      for (String choice : sessionMenu.getChoicesList()) {
-        if (i == 5) {
-          number = "Q";
-        } else {
-          number = Integer.toString(i + 1);
-        }
-        System.out.println(number + ". " + choice);
-        i++;
-      }
-      userResponse = inputScanner.nextLine();
-      // process the user input
-      // send results to the user
-      System.out.println("You entered: " + userResponse);
 
-    } while (!userResponse.equalsIgnoreCase("quit"));
+      for (String choice : crimeDataObject.AVAILABLE_OPTIONS)
+        System.out.println(choice);
+
+      userResponse = inputScanner.nextLine();
+      System.out.println("You entered: " + userResponse + "\n");
+      // process the user input & send results to screen
+      crimeDataObject.processRequest(userResponse);
+
+
+    } while (!userResponse.equalsIgnoreCase("q"));
 
     // Shutting down
     System.out.println(sessionMenu.getGoodbyeMessage());

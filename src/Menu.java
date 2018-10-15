@@ -20,12 +20,12 @@ class Menu {
             + "Type Q at any time to quit.";
 
     choicesList[0] =
-        "What were the percentages in population growth for each consecutive year from 1994 – 2013?";
-    choicesList[1] = "What year was the Murder rate the highest?";
-    choicesList[2] = "What year was the Murder rate the lowest?";
-    choicesList[3] = "What year was the Robbery rate the highest?";
-    choicesList[4] = "What year was the Robbery rate the lowest?";
-    choicesList[5] = "Quit the program";
+        "1. What were the percentages in population growth for each consecutive year from 1994 – 2013?";
+    choicesList[1] = "2. What year was the Murder rate the highest?";
+    choicesList[2] = "3. What year was the Murder rate the lowest?";
+    choicesList[3] = "4. What year was the Robbery rate the highest?";
+    choicesList[4] = "5. What year was the Robbery rate the lowest?";
+    choicesList[5] = "Q  Quit the program";
   }
 
   String getInputPrompt() {
