@@ -12,11 +12,10 @@ public class USCrime {
 
   public static void main(String[] args) {
 
-    // @todo use incoming args
-    final String FILE_PATH = "/Users/jimmysmutek/Code/school/USCrime/resources/Crime.csv";
+    String filePath = args[0];
 
     // Try to create a crimeDataObject, based on the supplied file path.
-    CrimeDataObject crimeDataObject = new CrimeDataObject(FILE_PATH);
+    CrimeDataObject crimeDataObject = new CrimeDataObject(filePath);
 
     // Init vars
     Menu sessionMenu = new Menu();
