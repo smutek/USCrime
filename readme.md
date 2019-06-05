@@ -1,6 +1,6 @@
 # Crime Statistics
 
-Simple CLI app written in Java. Reads a user provided file, performs specified calculations on the data and provides statistical results to the user. Includes menu system, a timer, and report generation. My final project for CMIS141!
+Simple CLI app written in Java. Reads a user provided file, performs specified calculations on the data and returns statistical results to the user. Includes menu system, a timer, and report generation. My final project for CMIS141!
 
 ## Requirements
 
